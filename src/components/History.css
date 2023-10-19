@@ -1,0 +1,29 @@
+.HistoryContainer{
+  width: 40%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin: 20px;
+  background-color: #fff;
+}
+
+.HistoryTitle{
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.HistoryOperationsContainer{
+  /* barra vertical */
+  overflow-y: scroll;
+  height: 170px;
+}
+
+.HistoryOperation{
+  display: flex;
+  justify-content: space-between;;  
+  background-color: rgba(210, 205, 205, 0.904);
+  margin: 10px 0;
+  padding: 4px;
+}

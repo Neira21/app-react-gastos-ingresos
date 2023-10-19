@@ -1,0 +1,26 @@
+.ExpenseTrakerContainer{
+  width: 30%;
+}
+
+.ExpenseTitle{
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 10px 0;
+  text-align: center;
+}
+.ExpenseRow{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+
+.ExpenseTrakerForm{
+  display: flex;
+  flex-direction: column;
+}
+
+.button{
+  color: white;
+  background-color: #2520a4;
+}
