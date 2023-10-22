@@ -1,10 +1,16 @@
+import { useContext } from 'react'
+import { Context } from '../context/GlobalContext'
+
 import './ExpenseTracker.css'
 
 const ExpenseTracker = () => {
+
+  const { total } = useContext(Context)
+
   return (
     <div className="ExpenseTrakerContainer">
       <div className="ExpenseTitle">
-        Expense Tracker
+        Expense Tracker {total}
       </div>
       <div className="ExpenseBody">
         <div className='ExpenseRow'>
