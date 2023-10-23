@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { useReducer, createContext, useContext } from "react";
+import { useReducer, createContext, useContext, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
 
@@ -22,7 +22,14 @@ export const GlobalProvider = ({children}) => {
   //Pero se puede hacer de otra manera usando useReducer
   //Con useReducer nos permite poder actualizar el state de una manera mas facil y nos da un mejor control
   //Mediiante el uso de nombres podemos saber que operaciones queremos realizar
-  const [state, dispatch] = useReducer( AppReducer, initialState)
+  const [state, dispatch] = useReducer( AppReducer, initialState, ()=>{
+    const localData = localStorage.getItem('transactions')
+    return localData ? JSON.parse(localData) : initialState
+  })
+
+  useEffect(()=>{
+    localStorage.setItem('transactions', JSON.stringify(state))
+  },[state])
 
   const addTransaction = (transaction) => {
     dispatch({
