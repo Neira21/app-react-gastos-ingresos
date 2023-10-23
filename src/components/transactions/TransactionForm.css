@@ -8,11 +8,6 @@
   margin: 10px 0;
   text-align: center;
 }
-.ExpenseRow{
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0;
-}
 
 
 .ExpenseTrakerForm{

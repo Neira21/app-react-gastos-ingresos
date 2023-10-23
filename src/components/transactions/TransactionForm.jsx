@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './TransactionForm.css'
 import { useGlobalState } from '../../context/GlobalContext'
+import Balance from '../Balance'
 
 const TransactionForm = () => {
   
@@ -8,11 +9,9 @@ const TransactionForm = () => {
   
   const [description, setDescription] =  useState('')
   const [amount, setAmount] =  useState(0)
-  
-  const [income, setIncome] =  useState(0)
-  const [expense, setExpense] =  useState(0)
 
   const handleSubmit = (e) => {
+    //En amount se coloca un signo + para que se convierta en un numero
     e.preventDefault()
     setAmount(0)
     setDescription('')
@@ -25,51 +24,12 @@ const TransactionForm = () => {
     )
   }
 
-  const calculateIncome = () => {
-    let incomeTotal = 0
-    data.transactions.forEach(transaction => {
-      if(transaction.amount > 0) {
-        incomeTotal += transaction.amount
-      }
-    })
-    setIncome(incomeTotal)
-  }
-
-  const calculateExpense = () => {
-    let expense = 0
-    data.transactions.forEach(transaction => {
-      if(transaction.amount < 0) {
-        expense += transaction.amount
-      }
-    })
-    setExpense(expense)
-  }
-
-  useEffect(()=>{
-    calculateIncome()
-    calculateExpense()  
-  },[amount])
-
-
   return (
     <div className="ExpenseTrakerContainer">
       <div className="ExpenseTitle">
         Expense Tracker
       </div>
-      <div className="ExpenseBody">
-        <div className='ExpenseRow'>
-          <span>Income</span>
-          <span>{income}</span>
-        </div>
-        <div className='ExpenseRow'>
-          <span>Expense</span> 
-          <span>{expense}</span>
-        </div>
-        <div className='ExpenseRow'>
-          <span>Your Balance</span>
-          <span>{income + expense}</span>
-        </div>
-      </div>
+      <Balance />
       <form className="ExpenseTrakerForm" onSubmit={handleSubmit}>
         <input 
           type="text" 
